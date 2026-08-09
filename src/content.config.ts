@@ -14,6 +14,7 @@ const pages = defineCollection({
         z.object({
           name: z.string(),
           role: z.string(),
+          image: z.string().optional(),
         }),
       )
       .optional(),

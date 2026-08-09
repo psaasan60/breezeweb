@@ -4,14 +4,19 @@ image: /images/BlueBandsmall-1024x637.jpg
 members:
   - name: Lasse Ekstrøm
     role: bass, vokal
+    image: /images/band/lasse-ekstrom.jpg
   - name: Paul Aasan
     role: trommer, vokal
+    image: /images/band/paul-aasan.jpg
   - name: Ronny Samuelsson
     role: gitar, munnspill, vokal
+    image: /images/band/ronny-samuelsson.jpg
   - name: Ferdinand Berentzen
     role: gitar, vokal
+    image: /images/band/ferdinand-berentzen.jpg
   - name: Øyvind Rusten
     role: keyboard, vokal
+    image: /images/band/oyvind-rusten.jpg
 testimonials:
   - quote: >-
       The Breeze har gjestet vår scene en rekke ganger til stor glede for

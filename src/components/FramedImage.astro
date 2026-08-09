@@ -12,13 +12,13 @@ interface Props {
 const { src, alt = '', class: className, imgClass = 'h-auto w-full', size = 'md' } = Astro.props;
 
 const sizes = {
-	sm: { pad: 'p-4', inset: '8px', corner: 'h-4 w-4', diamond: 'h-1.5 w-1.5', offset: '6px' },
-	md: { pad: 'p-11', inset: '18px', corner: 'h-7 w-7', diamond: 'h-2 w-2', offset: '10px' },
+	sm: { pad: 'p-5', inset: '4px', corner: 'h-4 w-4', diamond: 'h-1.5 w-1.5', offset: '2px', stroke: '1.25' },
+	md: { pad: 'p-14', inset: '8px', corner: 'h-7 w-7', diamond: 'h-2 w-2', offset: '4px', stroke: '1.5' },
 };
 const s = sizes[size];
 ---
 
 <div class:list={['relative overflow-hidden bg-base', s.pad, className]}>
 	{src ? <img src={src} alt={alt} class:list={['block', imgClass]} /> : <slot />}
-	<FrameOrnament inset={s.inset} cornerClass={s.corner} diamondClass={s.diamond} diamondOffset={s.offset} />
+	<FrameOrnament inset={s.inset} cornerClass={s.corner} diamondClass={s.diamond} diamondOffset={s.offset} strokeWidth={s.stroke} />
 </div>
