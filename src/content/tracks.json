@@ -1,0 +1,27 @@
+[
+  {
+    "id": "the-breeze-medley",
+    "title": "The Breeze medley",
+    "src": "/audio/Medley.mp3"
+  },
+  {
+    "id": "the-breeze",
+    "title": "The Breeze",
+    "src": "/audio/Mr-Breeze.mp3"
+  },
+  {
+    "id": "the-breeze-lies",
+    "title": "The Breeze med Lies",
+    "src": "/audio/Lies.mp3"
+  },
+  {
+    "id": "the-breeze-cocaine",
+    "title": "The Breeze med Cocaine",
+    "src": "/audio/Cocaine.mp3"
+  },
+  {
+    "id": "the-breeze-cajun-moon",
+    "title": "The Breeze med Cajun Moon",
+    "src": "/audio/Cajun-Moon.mp3"
+  }
+]

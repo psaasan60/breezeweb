@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages', 'jj-cale');
+const { Content } = await render(entry);
+---
+
+<Layout title={entry.data.title}>
+	<article class="mx-auto max-w-3xl px-6 py-16">
+		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">{entry.data.title}</h1>
+		{entry.data.image && <img src={entry.data.image} alt={entry.data.title} class="mt-8 w-full rounded-sm border border-line" />}
+		<div class="prose-invert mt-8 space-y-4 font-body text-warm-grey [&_p]:leading-relaxed">
+			<Content />
+		</div>
+	</article>
+</Layout>

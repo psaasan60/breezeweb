@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "The Broneers";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/TheBroneers-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Libre Franklin";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/LibreFranklin-Variable.woff2") format("woff2");
+}
+
+@theme {
+	--color-base: #120e0c;
+	--color-elevated: #1c1613;
+	--color-line: #382c22;
+
+	--color-gold: #c9a063;
+	--color-gold-soft: #d9bd8c;
+	--color-burgundy: #6e1f2b;
+	--color-burgundy-soft: #8a3542;
+
+	--color-ivory: #f3eada;
+	--color-warm-grey: #a79c8c;
+	--color-warm-grey-dim: #7d7264;
+
+	--font-display: "The Broneers", serif;
+	--font-body: "Libre Franklin", sans-serif;
+}
+
+@layer base {
+	body {
+		background-color: var(--color-base);
+		color: var(--color-ivory);
+		font-family: var(--font-body);
+	}
+}

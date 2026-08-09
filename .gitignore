@@ -18,7 +18,11 @@ refs/
 
 # Personal editor workspace
 breezeweb.code-workspace
-.vscode/
+
+# Ignore personal VSCode settings, but keep shared tasks/extensions tracked
+.vscode/*
+!.vscode/tasks.json
+!.vscode/extensions.json
 
 # macOS
 .DS_Store

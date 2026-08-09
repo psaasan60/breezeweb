@@ -1,0 +1,48 @@
+import { defineCollection, z } from 'astro:content';
+import { file, glob } from 'astro/loaders';
+
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  schema: z.object({
+    title: z.string(),
+    image: z.string().optional(),
+    images: z.array(z.string()).optional(),
+    email: z.string().optional(),
+    phone: z.string().optional(),
+    members: z
+      .array(
+        z.object({
+          name: z.string(),
+          role: z.string(),
+        }),
+      )
+      .optional(),
+    testimonials: z
+      .array(
+        z.object({
+          quote: z.string(),
+          author: z.string(),
+        }),
+      )
+      .optional(),
+  }),
+});
+
+const concerts = defineCollection({
+  loader: file('./src/content/concerts.json'),
+  schema: z.object({
+    date: z.string(),
+    original: z.string(),
+    venue: z.string(),
+  }),
+});
+
+const tracks = defineCollection({
+  loader: file('./src/content/tracks.json'),
+  schema: z.object({
+    title: z.string(),
+    src: z.string(),
+  }),
+});
+
+export const collections = { pages, concerts, tracks };

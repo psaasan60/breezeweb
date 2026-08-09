@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const today = new Date().toISOString().slice(0, 10);
+const upcoming = (await getCollection('concerts'))
+	.filter((c) => c.data.date >= today)
+	.sort((a, b) => a.data.date.localeCompare(b.data.date))
+	.slice(0, 3);
+
+const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout>
+	<main class="flex min-h-[80vh] flex-col items-center justify-center gap-4 px-6 text-center">
+		<h1 class="font-display text-5xl uppercase tracking-wide sm:text-7xl">The Breeze</h1>
+		<p class="font-body text-sm uppercase tracking-[0.2em] text-gold-soft">A tribute to J.J. Cale &amp; Tulsa Sound</p>
+		<a
+			href="/konserter/"
+			class="mt-4 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft"
+		>
+			Se kommende konserter
+		</a>
+	</main>
+
+	{
+		upcoming.length > 0 && (
+			<section class="mx-auto max-w-3xl px-6 pb-24">
+				<h2 class="text-center font-display text-2xl uppercase tracking-wide text-gold">Kommende konserter</h2>
+				<ul class="mt-8 divide-y divide-line border-y border-line font-body">
+					{upcoming.map((c) => (
+						<li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
+							<span class="text-ivory">{c.data.venue}</span>
+							<span class="text-sm uppercase tracking-wide text-warm-grey">{formatter.format(new Date(c.data.date))}</span>
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
+</Layout>

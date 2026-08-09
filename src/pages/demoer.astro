@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const tracks = await getCollection('tracks');
+---
+
+<Layout title="Demoer">
+	<article class="mx-auto max-w-3xl px-6 py-16">
+		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">Demoer</h1>
+		<ul class="mt-10 space-y-6">
+			{
+				tracks.map((track) => (
+					<li class="rounded-sm border border-line bg-elevated p-4">
+						<p class="font-body text-sm uppercase tracking-wide text-ivory">{track.data.title}</p>
+						<audio controls src={track.data.src} class="mt-3 w-full">
+							Din nettleser støtter ikke lydavspilling.
+						</audio>
+					</li>
+				))
+			}
+		</ul>
+	</article>
+</Layout>

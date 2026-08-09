@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages', 'band');
+const { Content } = await render(entry);
+const { members = [], testimonials = [] } = entry.data;
+---
+
+<Layout title={entry.data.title}>
+	<article class="mx-auto max-w-3xl px-6 py-16">
+		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">{entry.data.title}</h1>
+		{entry.data.image && <img src={entry.data.image} alt={entry.data.title} class="mt-8 w-full rounded-sm border border-line" />}
+		<div class="mt-8 space-y-4 font-body text-warm-grey [&_p]:leading-relaxed">
+			<Content />
+		</div>
+
+		{
+			members.length > 0 && (
+				<section class="mt-12">
+					<h2 class="font-display text-xl uppercase tracking-wide text-gold">Medlemmer</h2>
+					<ul class="mt-4 grid gap-3 sm:grid-cols-2">
+						{members.map((m) => (
+							<li class="rounded-sm border border-line bg-elevated px-4 py-3">
+								<p class="font-body font-bold text-ivory">{m.name}</p>
+								<p class="font-body text-sm text-warm-grey">{m.role}</p>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+
+		{
+			testimonials.length > 0 && (
+				<section class="mt-12">
+					<h2 class="font-display text-xl uppercase tracking-wide text-gold">Hva sier arrangørene?</h2>
+					<ul class="mt-4 space-y-6">
+						{testimonials.map((t) => (
+							<li class="border-l-2 border-gold pl-4">
+								<p class="font-body italic text-warm-grey">&ldquo;{t.quote}&rdquo;</p>
+								<p class="mt-2 font-body text-sm uppercase tracking-wide text-gold-soft">{t.author}</p>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+	</article>
+</Layout>

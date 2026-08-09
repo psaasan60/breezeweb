@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const today = new Date().toISOString().slice(0, 10);
+const all = await getCollection('concerts');
+const upcoming = all.filter((c) => c.data.date >= today).sort((a, b) => a.data.date.localeCompare(b.data.date));
+const past = all.filter((c) => c.data.date < today).sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout title="Konsert kalender">
+	<article class="mx-auto max-w-3xl px-6 py-16">
+		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">Konsert kalender</h1>
+
+		{
+			upcoming.length > 0 && (
+				<section class="mt-10">
+					<h2 class="font-display text-xl uppercase tracking-wide text-gold-soft">Kommende</h2>
+					<ul class="mt-4 divide-y divide-line border-y border-line font-body">
+						{upcoming.map((c) => (
+							<li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
+								<span class="text-ivory">{c.data.venue}</span>
+								<span class="text-sm uppercase tracking-wide text-warm-grey">{formatter.format(new Date(c.data.date))}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+
+		{
+			past.length > 0 && (
+				<section class="mt-12">
+					<h2 class="font-display text-xl uppercase tracking-wide text-gold-soft">Tidligere</h2>
+					<ul class="mt-4 divide-y divide-line border-y border-line font-body">
+						{past.map((c) => (
+							<li class="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
+								<span class="text-warm-grey">{c.data.venue}</span>
+								<span class="text-xs uppercase tracking-wide text-warm-grey-dim">{formatter.format(new Date(c.data.date))}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+	</article>
+</Layout>

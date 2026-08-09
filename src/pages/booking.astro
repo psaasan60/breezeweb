@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('pages', 'booking');
+---
+
+<Layout title={entry.data.title}>
+	<article class="mx-auto max-w-3xl px-6 py-16 text-center">
+		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">{entry.data.title}</h1>
+		<p class="mt-6 font-body text-sm uppercase tracking-[0.2em] text-gold-soft">A tribute to J.J. Cale &amp; Tulsa Sound</p>
+		<div class="mt-10 space-y-3 font-body text-warm-grey">
+			{entry.data.email && (
+				<p>
+					Epost: <a href={`mailto:${entry.data.email}`} class="text-ivory transition-colors hover:text-gold">{entry.data.email}</a>
+				</p>
+			)}
+			{entry.data.phone && (
+				<p>
+					Tlf: <a href={`tel:${entry.data.phone.replace(/\s/g, '')}`} class="text-ivory transition-colors hover:text-gold">{entry.data.phone}</a>
+				</p>
+			)}
+		</div>
+	</article>
+</Layout>

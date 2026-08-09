@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+const pageTitle = title ? `${title} – The Breeze Oslo Norway` : 'The Breeze Oslo Norway';
+---
+
+<html lang="no">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body class="flex min-h-screen flex-col bg-base text-ivory">
+		<Nav />
+		<div class="flex-1">
+			<slot />
+		</div>
+		<Footer />
+	</body>
+</html>
