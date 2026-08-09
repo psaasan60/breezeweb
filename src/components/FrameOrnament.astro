@@ -1,0 +1,37 @@
+---
+interface Props {
+	inset?: string;
+	cornerClass?: string;
+	diamondClass?: string;
+	diamondOffset?: string;
+	class?: string;
+}
+
+const { inset = '18px', cornerClass = 'h-7 w-7', diamondClass = 'h-2 w-2', diamondOffset = '10px', class: className } = Astro.props;
+
+const corner = 'M0,0 C16.5,2.25 24,13.5 17.25,22.5 C12.75,28.5 5.25,26.25 8.25,18.75';
+const corners = [
+	{ pos: 'left-0 top-0', rotate: '0deg' },
+	{ pos: 'right-0 top-0', rotate: '90deg' },
+	{ pos: 'right-0 bottom-0', rotate: '180deg' },
+	{ pos: 'left-0 bottom-0', rotate: '270deg' },
+];
+---
+
+<div class:list={['pointer-events-none absolute inset-0', className]}>
+	<div class="absolute border-2 border-gold" style={`inset: ${inset}`}></div>
+
+	{
+		corners.map((c) => (
+			<svg viewBox="0 0 28 30" class:list={['absolute text-gold', c.pos, cornerClass]} style={`transform: rotate(${c.rotate})`}>
+				<path d={corner} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+				<circle cx="8.25" cy="18.75" r="2.6" fill="currentColor" />
+			</svg>
+		))
+	}
+
+	<span class:list={['absolute left-1/2 -translate-x-1/2 rotate-45 bg-gold', diamondClass]} style={`top: ${diamondOffset}`} />
+	<span class:list={['absolute left-1/2 -translate-x-1/2 rotate-45 bg-gold', diamondClass]} style={`bottom: ${diamondOffset}`} />
+	<span class:list={['absolute top-1/2 -translate-y-1/2 rotate-45 bg-gold', diamondClass]} style={`left: ${diamondOffset}`} />
+	<span class:list={['absolute top-1/2 -translate-y-1/2 rotate-45 bg-gold', diamondClass]} style={`right: ${diamondOffset}`} />
+</div>

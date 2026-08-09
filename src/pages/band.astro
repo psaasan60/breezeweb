@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FramedImage from '../components/FramedImage.astro';
 import { getEntry, render } from 'astro:content';
 
 const entry = await getEntry('pages', 'band');
@@ -9,8 +10,8 @@ const { members = [], testimonials = [] } = entry.data;
 
 <Layout title={entry.data.title}>
 	<article class="mx-auto max-w-3xl px-6 py-16">
-		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">{entry.data.title}</h1>
-		{entry.data.image && <img src={entry.data.image} alt={entry.data.title} class="mt-8 w-full rounded-sm border border-line" />}
+		<h1 class="font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">{entry.data.title}</h1>
+		{entry.data.image && <FramedImage src={entry.data.image} alt={entry.data.title} class="mt-8" />}
 		<div class="mt-8 space-y-4 font-body text-warm-grey [&_p]:leading-relaxed">
 			<Content />
 		</div>
@@ -18,7 +19,7 @@ const { members = [], testimonials = [] } = entry.data;
 		{
 			members.length > 0 && (
 				<section class="mt-12">
-					<h2 class="font-display text-xl uppercase tracking-wide text-gold">Medlemmer</h2>
+					<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold">Medlemmer</h2>
 					<ul class="mt-4 grid gap-3 sm:grid-cols-2">
 						{members.map((m) => (
 							<li class="rounded-sm border border-line bg-elevated px-4 py-3">
@@ -34,7 +35,7 @@ const { members = [], testimonials = [] } = entry.data;
 		{
 			testimonials.length > 0 && (
 				<section class="mt-12">
-					<h2 class="font-display text-xl uppercase tracking-wide text-gold">Hva sier arrangørene?</h2>
+					<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold">Hva sier arrangørene?</h2>
 					<ul class="mt-4 space-y-6">
 						{testimonials.map((t) => (
 							<li class="border-l-2 border-gold pl-4">

@@ -12,12 +12,12 @@ const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'lon
 
 <Layout title="Konsert kalender">
 	<article class="mx-auto max-w-3xl px-6 py-16">
-		<h1 class="font-display text-4xl uppercase tracking-wide text-gold sm:text-5xl">Konsert kalender</h1>
+		<h1 class="font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">Konsert kalender</h1>
 
 		{
 			upcoming.length > 0 && (
 				<section class="mt-10">
-					<h2 class="font-display text-xl uppercase tracking-wide text-gold-soft">Kommende</h2>
+					<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold-soft">Kommende</h2>
 					<ul class="mt-4 divide-y divide-line border-y border-line font-body">
 						{upcoming.map((c) => (
 							<li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
@@ -33,7 +33,7 @@ const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'lon
 		{
 			past.length > 0 && (
 				<section class="mt-12">
-					<h2 class="font-display text-xl uppercase tracking-wide text-gold-soft">Tidligere</h2>
+					<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold-soft">Tidligere</h2>
 					<ul class="mt-4 divide-y divide-line border-y border-line font-body">
 						{past.map((c) => (
 							<li class="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
