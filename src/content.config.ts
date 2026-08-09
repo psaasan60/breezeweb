@@ -34,6 +34,9 @@ const concerts = defineCollection({
     date: z.string(),
     original: z.string(),
     venue: z.string(),
+    time: z.string().optional(),
+    image: z.string().optional(),
+    url: z.string().optional(),
   }),
 });
 

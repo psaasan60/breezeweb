@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 const links = [
 	{ href: '/jj-cale/', label: 'JJ Cale' },
 	{ href: '/band/', label: 'The Breeze' },
@@ -7,17 +9,35 @@ const links = [
 	{ href: '/presse/', label: 'Presse' },
 	{ href: '/booking/', label: 'Booking' },
 ];
+
+const social = [
+	{ href: '#', label: 'Facebook', icon: 'facebook' as const },
+	{ href: '#', label: 'YouTube', icon: 'youtube' as const },
+];
 ---
 
 <header class="border-b border-line bg-base">
-	<nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-5">
-		<a href="/" class="font-display text-2xl uppercase tracking-wide text-ivory">The Breeze</a>
+	<nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-2">
+		<a href="/" aria-label="The Breeze – forside">
+			<img src="/logo/logo-flat-nosub-light.svg" alt="The Breeze" class="h-16 w-auto" />
+		</a>
 		<ul class="flex flex-wrap gap-x-6 gap-y-2 font-body text-xs uppercase tracking-[0.15em] text-warm-grey">
 			{
 				links.map((link) => (
 					<li>
 						<a href={link.href} class="transition-colors hover:text-gold">
 							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<ul class="flex items-center gap-4 text-warm-grey">
+			{
+				social.map((s) => (
+					<li>
+						<a href={s.href} aria-label={s.label} class="block transition-colors hover:text-gold">
+							<Icon name={s.icon} class="h-5 w-5" />
 						</a>
 					</li>
 				))
