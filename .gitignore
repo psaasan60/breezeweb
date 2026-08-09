@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Astro build output and cache
+dist/
+.astro/
+
+# Netlify local state
+.netlify/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local documentation / design notes (not meant to be pushed, see AGENTS.md)
+refs/
+
+# Personal editor workspace
+breezeweb.code-workspace
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
