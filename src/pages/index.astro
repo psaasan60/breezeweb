@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import FrameOrnament from '../components/FrameOrnament.astro';
 import FramedImage from '../components/FramedImage.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
@@ -18,10 +17,11 @@ const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'lon
 const band = await getEntry('pages', 'band');
 const testimonials = band?.data.testimonials ?? [];
 const members = band?.data.members ?? [];
+const jjCale = await getEntry('pages', 'jj-cale');
 ---
 
 <Layout>
-	<section class="relative flex min-h-[80vh] flex-col items-center justify-start gap-4 overflow-hidden px-6 pt-8 text-center">
+	<section class="relative flex min-h-[80vh] flex-col items-center justify-end gap-4 overflow-hidden px-6 pt-8 pb-10 text-center">
 		<Image
 			src={heroImage}
 			alt=""
@@ -34,20 +34,55 @@ const members = band?.data.members ?? [];
 			fetchpriority="high"
 		/>
 		<div class="absolute inset-0 -z-10 bg-linear-to-t from-base/70 via-base/25 to-base/0"></div>
-		<FrameOrnament inset="24px" cornerClass="h-9 w-9" diamondClass="h-2.5 w-2.5" diamondOffset="14px" />
 
 		<h1 class="relative w-full">
 			<img
 				src="/logo/logo-arc-sub-light.svg"
 				alt="The Breeze – A tribute to J.J. Cale & Tulsa Sound"
-				class="mx-auto w-full max-w-6xl drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]"
+				class="mx-auto block w-full max-w-208 drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]"
 			/>
 		</h1>
 	</section>
 
+	<div class="border-b border-line bg-elevated">
+		<div class="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-4 px-6 py-5">
+			<span class="font-body text-xs font-bold uppercase tracking-[0.16em] text-warm-grey-dim">Lytt til oss</span>
+			<a href="/demoer/" class="flex items-center gap-2 font-body text-sm font-semibold text-warm-grey transition-colors hover:text-gold">
+				<Icon name="music" class="h-5 w-5" />
+				Hør smakebiter fra oss
+			</a>
+		</div>
+	</div>
+
+	{
+		band?.data.excerpt && (
+			<section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+				<div class="grid items-center gap-10 sm:grid-cols-[1.1fr_0.9fr] sm:gap-12">
+					<div>
+						<h2 class="font-body text-2xl font-normal uppercase tracking-widest text-gold sm:text-3xl">
+							The Breeze – Tulsa lyden lever videre
+						</h2>
+						<p class="mt-5 font-body leading-relaxed text-warm-grey">{band.data.excerpt}</p>
+						<a
+							href="/band/"
+							class="mt-6 inline-block rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft"
+						>
+							Les mer om bandet
+						</a>
+					</div>
+					{jjCale?.data.image && (
+						<div class="border border-line">
+							<img src={jjCale.data.image} alt="JJ Cale" class="aspect-4/3 w-full object-cover grayscale contrast-105" />
+						</div>
+					)}
+				</div>
+			</section>
+		)
+	}
+
 	{
 		upcoming.length > 0 && (
-			<section class="mx-auto max-w-5xl px-6 pt-16 pb-24">
+			<section class="mx-auto max-w-5xl px-6 pt-4 pb-24">
 				<div class="grid gap-8 sm:grid-cols-3">
 					{upcoming.map((c) => {
 						const Card = c.data.url ? 'a' : 'div';
@@ -85,24 +120,6 @@ const members = band?.data.members ?? [];
 	}
 
 	{
-		testimonials.length > 0 && (
-			<section class="mx-auto max-w-5xl px-6 pb-24">
-				<div class="rounded-sm border border-line bg-elevated p-8 sm:p-10">
-					<h2 class="text-center font-body text-3xl font-normal uppercase tracking-[0.12em] text-gold sm:text-4xl">Hva sier arrangørene?</h2>
-					<div class="mt-8 grid gap-8 sm:grid-cols-2">
-						{testimonials.map((t) => (
-							<blockquote class="border-l-2 border-gold pl-4">
-								<p class="font-body text-warm-grey italic">&ldquo;{t.quote}&rdquo;</p>
-								<footer class="mt-2 font-body text-sm uppercase tracking-wide text-gold-soft">{t.author}</footer>
-							</blockquote>
-						))}
-					</div>
-				</div>
-			</section>
-		)
-	}
-
-	{
 		members.length > 0 && (
 			<section class="mx-auto max-w-7xl px-6 pb-24">
 				<div class="rounded-sm border border-line bg-elevated p-8 sm:p-14">
@@ -131,4 +148,66 @@ const members = band?.data.members ?? [];
 			</section>
 		)
 	}
+
+	{
+		testimonials.length > 0 && (
+			<section class="mx-auto max-w-3xl px-6 pb-24 text-center">
+				<div id="testimonial-rotator" class="relative">
+					<div class="font-serif text-6xl leading-none text-gold opacity-35" aria-hidden="true">&ldquo;</div>
+					{testimonials.map((t, i) => (
+						<div class:list={['testimonial-slide', { hidden: i !== 0 }]} data-index={i}>
+							<p class="font-body text-2xl leading-snug text-ivory italic">&ldquo;{t.quote}&rdquo;</p>
+							<p class="mt-4 font-body text-xs uppercase tracking-wide text-gold-soft">{t.author}</p>
+						</div>
+					))}
+					<div class="mt-8 flex justify-center gap-2">
+						{testimonials.map((_, i) => (
+							<button
+								type="button"
+								class:list={['h-1.75 w-1.75 rounded-full bg-line transition-colors', { 'bg-gold': i === 0 }]}
+								data-dot={i}
+								aria-label={`Sitat ${i + 1}`}
+							/>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<div class="border-t border-b border-line bg-elevated px-6 py-16 text-center">
+		<h2 class="font-body text-3xl font-normal uppercase tracking-[0.12em] text-gold sm:text-4xl">Vil du booke The Breeze?</h2>
+		<p class="mx-auto mt-4 max-w-xl font-body leading-relaxed text-warm-grey">
+			Vi spiller på bluesklubber, private arrangementer og festivaler over hele landet. Ta kontakt for pris og tilgjengelighet.
+		</p>
+		<a
+			href="/booking/"
+			class="mt-7 inline-block rounded-sm border border-gold px-8 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft"
+		>
+			Kontakt for booking
+		</a>
+	</div>
 </Layout>
+
+<script>
+	const root = document.getElementById('testimonial-rotator');
+	if (root) {
+		const slides = Array.from(root.querySelectorAll<HTMLElement>('.testimonial-slide'));
+		const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+		let current = 0;
+
+		function show(next: number) {
+			slides[current]?.classList.add('hidden');
+			dots[current]?.classList.remove('bg-gold');
+			current = next;
+			slides[current]?.classList.remove('hidden');
+			dots[current]?.classList.add('bg-gold');
+		}
+
+		dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+
+		if (slides.length > 1) {
+			setInterval(() => show((current + 1) % slides.length), 6000);
+		}
+	}
+</script>

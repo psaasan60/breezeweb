@@ -1,5 +1,11 @@
 ---
 title: The Breeze
+excerpt: >-
+  JJ Cale gikk bort i 2013, men musikken hans lever i beste velgående.
+  Hvorfor? Fordi den har klassisk format, og fordi den er så lett
+  gjenkjennelig. Mange har nok først og fremst hørt JJ Cale gjennom Eric
+  Claptons stemme – men det er altså JJ Cale som komponerte både «After
+  Midnight» og «Cocaine».
 image: /images/BlueBandsmall-1024x637.jpg
 members:
   - name: Lasse Ekstrøm
