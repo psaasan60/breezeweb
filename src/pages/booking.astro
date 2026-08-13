@@ -1,25 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getEntry } from 'astro:content';
+import FramedImage from '../components/FramedImage.astro';
+import Icon from '../components/Icon.astro';
+import { getEntry, render } from 'astro:content';
 
 const entry = await getEntry('pages', 'booking');
+const { Content } = await render(entry);
+const band = await getEntry('pages', 'band');
+const testimonials = (band?.data.testimonials ?? []).slice(0, 2);
+const memberCount = band?.data.members?.length ?? 0;
 ---
 
 <Layout title={entry.data.title}>
-	<article class="mx-auto max-w-3xl px-6 py-16 text-center">
-		<h1 class="font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">{entry.data.title}</h1>
-		<p class="mt-6 font-body text-sm uppercase tracking-[0.2em] text-gold-soft">A tribute to J.J. Cale &amp; Tulsa Sound</p>
-		<div class="mt-10 space-y-3 font-body text-warm-grey">
-			{entry.data.email && (
-				<p>
-					Epost: <a href={`mailto:${entry.data.email}`} class="text-ivory transition-colors hover:text-gold">{entry.data.email}</a>
-				</p>
-			)}
-			{entry.data.phone && (
-				<p>
-					Tlf: <a href={`tel:${entry.data.phone.replace(/\s/g, '')}`} class="text-ivory transition-colors hover:text-gold">{entry.data.phone}</a>
-				</p>
-			)}
+	<article class="mx-auto max-w-3xl px-6 py-16">
+		<h1 class="text-center font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">
+			{entry.data.title}
+		</h1>
+		<p class="mt-3 text-center font-body text-sm uppercase tracking-[0.2em] text-gold-soft">
+			A tribute to J.J. Cale &amp; Tulsa Sound
+		</p>
+
+		{entry.data.image && <FramedImage src={entry.data.image} alt="The Breeze" class="mt-10" />}
+
+		<div class="mt-10 space-y-4 font-body leading-relaxed text-warm-grey [&_p]:leading-relaxed">
+			<Content />
+		</div>
+
+		{
+			memberCount > 0 && (
+				<div class="mt-10 grid grid-cols-3 gap-4 border-y border-line py-6 text-center font-body">
+					<div>
+						<p class="text-2xl font-bold text-ivory">{memberCount}</p>
+						<p class="mt-1 text-xs uppercase tracking-wide text-warm-grey">Musikere</p>
+					</div>
+					<div>
+						<p class="text-2xl font-bold text-ivory">2018</p>
+						<p class="mt-1 text-xs uppercase tracking-wide text-warm-grey">Etablert</p>
+					</div>
+					<div>
+						<p class="text-2xl font-bold text-ivory">Blues/rock</p>
+						<p class="mt-1 text-xs uppercase tracking-wide text-warm-grey">Sjanger</p>
+					</div>
+				</div>
+			)
+		}
+
+		{
+			testimonials.length > 0 && (
+				<div class="mt-10 space-y-6">
+					{testimonials.map((t) => (
+						<blockquote class="border-l-2 border-gold pl-4">
+							<p class="font-body text-warm-grey italic">&ldquo;{t.quote}&rdquo;</p>
+							<footer class="mt-2 font-body text-sm uppercase tracking-wide text-gold-soft">{t.author}</footer>
+						</blockquote>
+					))}
+				</div>
+			)
+		}
+
+		<div class="mt-12 rounded-sm border border-line bg-elevated p-8 text-center">
+			<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold">Ta kontakt</h2>
+			<div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+				{entry.data.email && (
+					<a
+						href={`mailto:${entry.data.email}`}
+						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
+					>
+						<Icon name="mail" class="h-5 w-5" />
+						{entry.data.email}
+					</a>
+				)}
+				{entry.data.phone && (
+					<a
+						href={`tel:${entry.data.phone.replace(/\s/g, '')}`}
+						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
+					>
+						<Icon name="phone" class="h-5 w-5" />
+						{entry.data.phone}
+					</a>
+				)}
+			</div>
+			<p class="mt-6 font-body text-xs uppercase tracking-wide text-warm-grey">
+				<a href="/presse/" class="hover:text-gold">Pressebilder</a>
+				<span class="mx-2">·</span>
+				<a href="/konserter/" class="hover:text-gold">Konsertkalender</a>
+				<span class="mx-2">·</span>
+				<a href="/demoer/" class="hover:text-gold">Hør oss spille</a>
+			</p>
 		</div>
 	</article>
 </Layout>
