@@ -44,14 +44,24 @@ const jjCale = await getEntry('pages', 'jj-cale');
 		</h1>
 	</section>
 
-	<div class="border-b border-line bg-elevated">
-		<div class="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-4 px-6 py-5">
-			<span class="font-body text-xs font-bold uppercase tracking-[0.16em] text-warm-grey-dim">Lytt til oss</span>
-			<a href="/demoer/" class="flex items-center gap-2 font-body text-sm font-semibold text-warm-grey transition-colors hover:text-gold">
-				<Icon name="music" class="h-5 w-5" />
-				Hør smakebiter fra oss
+	<div class="border-b border-line bg-elevated px-6 py-10 text-center">
+		<p class="font-body text-xs font-bold uppercase tracking-[0.16em] text-warm-grey-dim">Lytt til oss</p>
+		<button
+			id="listen-play-button"
+			type="button"
+			data-src="/audio/Medley.mp3"
+			class="mt-4 inline-flex items-center gap-3 rounded-sm border-2 border-gold px-8 py-4 font-body text-base font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft"
+		>
+			<span data-icon="play"><Icon name="play" class="h-6 w-6" /></span>
+			<span data-icon="pause" class="hidden"><Icon name="pause" class="h-6 w-6" /></span>
+			The Breeze medley
+		</button>
+		<audio id="listen-audio" preload="none"></audio>
+		<p class="mt-4">
+			<a href="/demoer/" class="font-body text-xs uppercase tracking-wide text-warm-grey underline-offset-4 hover:text-gold hover:underline">
+				Se alle demoer
 			</a>
-		</div>
+		</p>
 	</div>
 
 	{
@@ -190,6 +200,30 @@ const jjCale = await getEntry('pages', 'jj-cale');
 </Layout>
 
 <script>
+	const playButton = document.getElementById('listen-play-button') as HTMLButtonElement | null;
+	const audio = document.getElementById('listen-audio') as HTMLAudioElement | null;
+	if (playButton && audio) {
+		const playIcon = playButton.querySelector('[data-icon="play"]');
+		const pauseIcon = playButton.querySelector('[data-icon="pause"]');
+		audio.src = playButton.dataset.src ?? '';
+
+		function setPlaying(playing: boolean) {
+			playIcon?.classList.toggle('hidden', playing);
+			pauseIcon?.classList.toggle('hidden', !playing);
+		}
+
+		playButton.addEventListener('click', () => {
+			if (audio.paused) {
+				audio.play();
+			} else {
+				audio.pause();
+			}
+		});
+		audio.addEventListener('play', () => setPlaying(true));
+		audio.addEventListener('pause', () => setPlaying(false));
+		audio.addEventListener('ended', () => setPlaying(false));
+	}
+
 	const root = document.getElementById('testimonial-rotator');
 	if (root) {
 		const slides = Array.from(root.querySelectorAll<HTMLElement>('.testimonial-slide'));

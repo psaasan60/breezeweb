@@ -1,6 +1,6 @@
 ---
 type Props = {
-	name: 'facebook' | 'instagram' | 'youtube' | 'spotify' | 'apple-music' | 'mail' | 'phone' | 'photo' | 'music';
+	name: 'facebook' | 'instagram' | 'youtube' | 'spotify' | 'apple-music' | 'mail' | 'phone' | 'photo' | 'music' | 'menu' | 'play' | 'pause';
 	class?: string;
 };
 
@@ -53,6 +53,27 @@ const { name, class: className } = Astro.props;
 	name === 'photo' && (
 		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={className} aria-hidden="true">
 			<path d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+		</svg>
+	)
+}
+{
+	name === 'play' && (
+		<svg viewBox="0 0 24 24" fill="currentColor" class={className} aria-hidden="true">
+			<path d="M6.3 4.2a1 1 0 0 1 1.51-.86l13 7.8a1 1 0 0 1 0 1.72l-13 7.8A1 1 0 0 1 6.3 19.8V4.2Z" />
+		</svg>
+	)
+}
+{
+	name === 'pause' && (
+		<svg viewBox="0 0 24 24" fill="currentColor" class={className} aria-hidden="true">
+			<path d="M6.75 4.5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-13a1 1 0 0 0-1-1h-2.5ZM14.75 4.5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-13a1 1 0 0 0-1-1h-2.5Z" />
+		</svg>
+	)
+}
+{
+	name === 'menu' && (
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={className} aria-hidden="true">
+			<path d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
 		</svg>
 	)
 }

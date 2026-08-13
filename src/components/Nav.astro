@@ -17,11 +17,12 @@ const social = [
 ---
 
 <header class="border-b border-line bg-base">
-	<nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-2">
+	<nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-2">
 		<a href="/" aria-label="The Breeze – forside">
-			<img src="/logo/logo-flat-nosub-light.svg" alt="The Breeze" class="h-16 w-auto" />
+			<img src="/logo/logo-flat-nosub-light.svg" alt="The Breeze" class="h-12 w-auto sm:h-16" />
 		</a>
-		<ul class="flex flex-wrap gap-x-6 gap-y-2 font-body text-xs uppercase tracking-[0.15em] text-warm-grey">
+
+		<ul class="hidden flex-wrap gap-x-6 gap-y-2 font-body text-xs uppercase tracking-[0.15em] text-warm-grey sm:flex">
 			{
 				links.map((link) => (
 					<li>
@@ -32,7 +33,7 @@ const social = [
 				))
 			}
 		</ul>
-		<ul class="flex items-center gap-4 text-warm-grey">
+		<ul class="hidden items-center gap-4 text-warm-grey sm:flex">
 			{
 				social.map((s) => (
 					<li>
@@ -43,5 +44,52 @@ const social = [
 				))
 			}
 		</ul>
+
+		<details id="mobile-menu" class="relative sm:hidden">
+			<summary class="flex list-none items-center p-2 text-warm-grey marker:content-none [&::-webkit-details-marker]:hidden">
+				<Icon name="menu" class="h-6 w-6" />
+				<span class="sr-only">Meny</span>
+			</summary>
+			<div class="absolute top-full right-0 z-20 mt-3 w-64 border border-line bg-base p-5 shadow-lg">
+				<ul class="flex flex-col gap-4 font-body text-sm uppercase tracking-[0.1em] text-warm-grey">
+					{
+						links.map((link) => (
+							<li>
+								<a href={link.href} class="block transition-colors hover:text-gold">
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+				<ul class="mt-5 flex items-center gap-4 border-t border-line pt-4 text-warm-grey">
+					{
+						social.map((s) => (
+							<li>
+								<a href={s.href} aria-label={s.label} class="block transition-colors hover:text-gold">
+									<Icon name={s.icon} class="h-5 w-5" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</details>
 	</nav>
 </header>
+
+<script>
+	const menu = document.getElementById('mobile-menu') as HTMLDetailsElement | null;
+	if (menu) {
+		menu.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				menu.open = false;
+			});
+		});
+		document.addEventListener('click', (event) => {
+			if (menu.open && !menu.contains(event.target as Node)) {
+				menu.open = false;
+			}
+		});
+	}
+</script>
