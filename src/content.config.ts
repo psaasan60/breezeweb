@@ -31,10 +31,9 @@ const pages = defineCollection({
 });
 
 const concerts = defineCollection({
-  loader: file('./src/content/concerts.json'),
+  loader: glob({ pattern: '**/*.json', base: './src/content/concerts' }),
   schema: z.object({
     date: z.string(),
-    original: z.string(),
     venue: z.string(),
     time: z.string().optional(),
     image: z.string().optional(),

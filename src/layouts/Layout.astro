@@ -19,6 +19,7 @@ const pageTitle = title ? `${title} – The Breeze Oslo Norway` : 'The Breeze Os
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 	</head>
 	<body class="flex min-h-screen flex-col bg-base text-ivory">
 		<Nav />
@@ -26,5 +27,16 @@ const pageTitle = title ? `${title} – The Breeze Oslo Norway` : 'The Breeze Os
 			<slot />
 		</div>
 		<Footer />
+		<script is:inline>
+			if (window.netlifyIdentity) {
+				window.netlifyIdentity.on('init', (user) => {
+					if (!user) {
+						window.netlifyIdentity.on('login', () => {
+							document.location.href = '/admin/';
+						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

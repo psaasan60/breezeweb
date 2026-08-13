@@ -1,0 +1,80 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "concerts"
+    label: "Konserter"
+    label_singular: "Konsert"
+    folder: "src/content/concerts"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{fields.date}}-{{fields.venue}}"
+    identifier_field: "venue"
+    summary: "{{date}} — {{venue}}"
+    sortable_fields: ["date", "venue"]
+    fields:
+      - { label: "Dato", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Spillested", name: "venue", widget: "string" }
+      - { label: "Klokkeslett", name: "time", widget: "string", required: false, hint: "F.eks. 20:00" }
+      - { label: "Bilde av spillestedet", name: "image", widget: "image", required: false }
+      - { label: "Billettlenke", name: "url", widget: "string", required: false, hint: "Full lenke, f.eks. https://..." }
+
+  - name: "pages"
+    label: "Sider"
+    files:
+      - name: "band"
+        label: "Bandet"
+        file: "src/content/pages/band.md"
+        fields:
+          - { label: "Tittel", name: "title", widget: "string" }
+          - { label: "Kort tekst (vises på forsiden)", name: "excerpt", widget: "text" }
+          - { label: "Bandbilde", name: "image", widget: "image", required: false }
+          - label: "Medlemmer"
+            name: "members"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Navn", name: "name", widget: "string" }
+              - { label: "Rolle", name: "role", widget: "string" }
+              - { label: "Bilde", name: "image", widget: "image", required: false }
+          - label: "Tilbakemeldinger fra arrangører"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{author}}"
+            fields:
+              - { label: "Sitat", name: "quote", widget: "text" }
+              - { label: "Forfatter", name: "author", widget: "string" }
+          - { label: "Tekst om bandet", name: "body", widget: "markdown" }
+
+      - name: "jj-cale"
+        label: "JJ Cale-siden"
+        file: "src/content/pages/jj-cale.md"
+        fields:
+          - { label: "Tittel", name: "title", widget: "string" }
+          - { label: "Bilde", name: "image", widget: "image", required: false }
+          - { label: "Tekst", name: "body", widget: "markdown" }
+
+      - name: "booking"
+        label: "Booking-siden"
+        file: "src/content/pages/booking.md"
+        fields:
+          - { label: "Tittel", name: "title", widget: "string" }
+          - { label: "E-post", name: "email", widget: "string", required: false }
+          - { label: "Telefon", name: "phone", widget: "string", required: false }
+          - { label: "Bilde", name: "image", widget: "image", required: false }
+          - { label: "Salgstekst", name: "body", widget: "markdown" }
+
+      - name: "press"
+        label: "Presse-siden"
+        file: "src/content/pages/press.md"
+        fields:
+          - { label: "Tittel", name: "title", widget: "string" }
+          - label: "Pressebilder"
+            name: "images"
+            widget: "list"
+            field: { label: "Bilde", name: "image", widget: "image" }
