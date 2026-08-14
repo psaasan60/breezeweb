@@ -1,10 +1,12 @@
-name: Daily rebuild
+name: Weekly rebuild
 
 on:
   schedule:
-    # 02:00 UTC every day, so past concerts move to "Tidligere" without
+    # 02:00 UTC every Monday, so past concerts move to "Tidligere" without
     # needing a manual edit or CMS change to trigger a new deploy.
-    - cron: "0 2 * * *"
+    # Kept infrequent on purpose — the Netlify free plan has a limited
+    # monthly credit budget, and every rebuild spends some of it.
+    - cron: "0 2 * * 1"
   workflow_dispatch: {}
 
 jobs:
