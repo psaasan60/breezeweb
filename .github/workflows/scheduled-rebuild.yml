@@ -1,0 +1,20 @@
+name: Daily rebuild
+
+on:
+  schedule:
+    # 02:00 UTC every day, so past concerts move to "Tidligere" without
+    # needing a manual edit or CMS change to trigger a new deploy.
+    - cron: "0 2 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  trigger-netlify-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build hook
+        run: |
+          if [ -z "${{ secrets.NETLIFY_BUILD_HOOK }}" ]; then
+            echo "NETLIFY_BUILD_HOOK secret is not set" >&2
+            exit 1
+          fi
+          curl --fail -X POST "${{ secrets.NETLIFY_BUILD_HOOK }}"
