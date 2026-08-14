@@ -18,7 +18,7 @@ collections:
     summary: "{{date}} — {{venue}}"
     sortable_fields: ["date", "venue"]
     fields:
-      - { label: "Dato", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
       - { label: "Spillested", name: "venue", widget: "string" }
       - { label: "Klokkeslett", name: "time", widget: "string", required: false, hint: "F.eks. 20:00" }
       - { label: "Bilde av spillestedet", name: "image", widget: "image", required: false }
