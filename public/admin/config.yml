@@ -24,6 +24,24 @@ collections:
       - { label: "Bilde av spillestedet", name: "image", widget: "image", required: false }
       - { label: "Billettlenke", name: "url", widget: "string", required: false, hint: "Full lenke, f.eks. https://..." }
 
+  - name: "tracks"
+    label: "Demoer"
+    label_singular: "Demospor"
+    folder: "src/content/tracks"
+    create: true
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    summary: "{{title}}"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - label: "Lydfil (mp3)"
+        name: "src"
+        widget: "file"
+        media_folder: "public/audio"
+        public_folder: "/audio"
+        hint: "Last opp en mp3-fil"
+
   - name: "pages"
     label: "Sider"
     files:
