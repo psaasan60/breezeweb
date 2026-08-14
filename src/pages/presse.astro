@@ -1,14 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const entry = await getEntry('pages', 'press');
+const { Content } = await render(entry);
 const images = entry.data.images ?? [];
 ---
 
 <Layout title={entry.data.title}>
 	<article class="mx-auto max-w-3xl px-6 py-16">
 		<h1 class="font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">{entry.data.title}</h1>
+		<div class="mt-6 space-y-4 font-body leading-relaxed text-warm-grey [&_a]:text-gold [&_a]:hover:text-gold-soft [&_p]:leading-relaxed">
+			<Content />
+		</div>
 		{
 			images.length > 0 && (
 				<div class="mt-10 grid gap-4 sm:grid-cols-2">

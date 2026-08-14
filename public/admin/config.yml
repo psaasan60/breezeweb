@@ -74,6 +74,7 @@ collections:
         file: "src/content/pages/press.md"
         fields:
           - { label: "Tittel", name: "title", widget: "string" }
+          - { label: "Tekst", name: "body", widget: "markdown" }
           - label: "Pressebilder"
             name: "images"
             widget: "list"
