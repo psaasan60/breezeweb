@@ -16,11 +16,7 @@ collections:
     slug: "{{fields.date}}-{{fields.venue}}"
     identifier_field: "venue"
     summary: "{{date}} — {{venue}}"
-    sortable_fields:
-      fields: ["date", "venue"]
-      default:
-        field: "date"
-        direction: "descending"
+    sortable_fields: ["date", "venue"]
     fields:
       - { label: "Dato", name: "date", widget: "date", format: "YYYY-MM-DD" }
       - { label: "Spillested", name: "venue", widget: "string" }
