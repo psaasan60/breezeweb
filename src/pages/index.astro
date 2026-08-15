@@ -21,7 +21,7 @@ const jjCale = await getEntry('pages', 'jj-cale');
 ---
 
 <Layout>
-	<section class="relative flex min-h-[80vh] flex-col items-center justify-end gap-4 overflow-hidden px-6 pt-8 pb-10 text-center">
+	<section class="relative flex min-h-[80vh] flex-col items-center justify-start gap-4 overflow-hidden px-6 pt-8 pb-10 text-center">
 		<Image
 			src={heroImage}
 			alt=""
@@ -37,11 +37,14 @@ const jjCale = await getEntry('pages', 'jj-cale');
 
 		<h1 class="relative w-full">
 			<img
-				src="/logo/logo-arc-sub-light.svg"
-				alt="The Breeze – A tribute to J.J. Cale & Tulsa Sound"
+				src="/logo/logo-arc-wordmark-only-light.svg"
+				alt="The Breeze"
 				class="mx-auto block w-full max-w-208 drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]"
 			/>
 		</h1>
+		<p class="absolute bottom-[18%] left-0 w-full font-body text-[1.2rem] font-bold uppercase tracking-[0.6em] text-gold-soft drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
+			A tribute to J.J. Cale &amp; Tulsa Sound
+		</p>
 	</section>
 
 	<div class="border-b border-line bg-elevated px-6 py-10 text-center">
