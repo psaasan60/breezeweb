@@ -232,6 +232,12 @@ const jjCale = await getEntry('pages', 'jj-cale');
 		const slides = Array.from(root.querySelectorAll<HTMLElement>('.testimonial-slide'));
 		const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
 		let current = 0;
+		let timer: ReturnType<typeof setTimeout>;
+
+		function readingTime(el: HTMLElement) {
+			const words = (el.textContent ?? '').trim().split(/\s+/).length;
+			return Math.max(6000, words * 350);
+		}
 
 		function show(next: number) {
 			slides[current]?.classList.add('hidden');
@@ -241,10 +247,24 @@ const jjCale = await getEntry('pages', 'jj-cale');
 			dots[current]?.classList.add('bg-gold');
 		}
 
-		dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
-
-		if (slides.length > 1) {
-			setInterval(() => show((current + 1) % slides.length), 6000);
+		function scheduleNext() {
+			clearTimeout(timer);
+			if (slides.length > 1) {
+				const active = slides[current];
+				timer = setTimeout(() => {
+					show((current + 1) % slides.length);
+					scheduleNext();
+				}, active ? readingTime(active) : 6000);
+			}
 		}
+
+		dots.forEach((dot, i) =>
+			dot.addEventListener('click', () => {
+				show(i);
+				scheduleNext();
+			}),
+		);
+
+		scheduleNext();
 	}
 </script>
