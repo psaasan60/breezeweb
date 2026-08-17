@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import FramedImage from '../components/FramedImage.astro';
+import BackstageCard from '../components/BackstageCard.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/images/hero-forside.png';
@@ -18,6 +19,10 @@ const band = await getEntry('pages', 'band');
 const testimonials = band?.data.testimonials ?? [];
 const members = band?.data.members ?? [];
 const jjCale = await getEntry('pages', 'jj-cale');
+
+const backstagePosts = (await getCollection('backstage'))
+	.sort((a, b) => b.data.date.localeCompare(a.data.date))
+	.slice(0, 1);
 ---
 
 <Layout>
@@ -45,8 +50,27 @@ const jjCale = await getEntry('pages', 'jj-cale');
 		<p class="absolute bottom-[18%] left-0 w-full font-body text-[1.2rem] font-bold uppercase tracking-[0.6em] text-gold-soft drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
 			A tribute to J.J. Cale and The Tulsa sound
 		</p>
-	</section>
-
+	</section>	{
+		backstagePosts.length > 0 && (
+			<section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+				<div class="mb-8 flex items-center justify-between">
+					<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold sm:text-3xl">
+						Fra Backstage
+					</h2>
+					<a href="/backstage/" class="font-body text-xs font-bold uppercase tracking-wide text-gold hover:text-gold-soft">
+						Se alle
+					</a>
+				</div>
+				<BackstageCard
+					title={backstagePosts[0].data.title}
+					excerpt={backstagePosts[0].data.excerpt}
+					image={backstagePosts[0].data.image}
+					date={backstagePosts[0].data.date}
+					href={`/backstage/${backstagePosts[0].id}/`}
+				/>
+			</section>
+		)
+	}
 	<div class="border-b border-line bg-elevated px-6 py-10 text-center">
 		<p class="font-body text-xs font-bold uppercase tracking-[0.16em] text-warm-grey-dim">Lytt til oss</p>
 		<button

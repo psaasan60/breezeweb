@@ -49,4 +49,14 @@ const tracks = defineCollection({
   }),
 });
 
-export const collections = { pages, concerts, tracks };
+const backstage = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/backstage' }),
+  schema: z.object({
+    title: z.string(),
+    excerpt: z.string(),
+    image: z.string(),
+    date: z.string(),
+  }),
+});
+
+export const collections = { pages, concerts, tracks, backstage };

@@ -1,0 +1,41 @@
+---
+export interface Props {
+  title: string;
+  image: string;
+  date: string;
+}
+
+const { title, image, date } = Astro.props;
+
+const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+const formattedDate = formatter.format(new Date(date + 'T00:00:00'));
+---
+
+<article class="mx-auto max-w-3xl px-6 py-12">
+  <!-- Tittel og dato -->
+  <div class="mb-8">
+    <time class="font-body text-sm uppercase tracking-wide text-gold-soft">{formattedDate}</time>
+    <h1 class="mt-2 font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">
+      {title}
+    </h1>
+  </div>
+
+  <!-- Hovedbilde -->
+  {
+    image && (
+      <div class="mb-10 overflow-hidden rounded-sm border border-line">
+        <img
+          src={image}
+          alt={title}
+          class="aspect-video w-full object-cover"
+          loading="eager"
+        />
+      </div>
+    )
+  }
+
+  <!-- Tekstinnhold -->
+  <div class="space-y-5 font-body text-warm-grey [&_p]:leading-relaxed [&_h2]:mt-8 [&_h2]:font-normal [&_h2]:uppercase [&_h2]:tracking-[0.12em] [&_h2]:text-gold [&_h2]:text-2xl [&_h3]:mt-6 [&_h3]:font-bold [&_h3]:uppercase [&_h3]:text-lg [&_ul]:space-y-2 [&_ul]:pl-6 [&_ul]:list-disc [&_ol]:space-y-2 [&_ol]:pl-6 [&_ol]:list-decimal [&_li]:font-body [&_li]:text-warm-grey [&_blockquote]:border-l-2 [&_blockquote]:border-gold [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-warm-grey">
+    <slot />
+  </div>
+</article>

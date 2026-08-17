@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BackstageCard from '../components/BackstageCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('backstage')).sort((a, b) => 
+  b.data.date.localeCompare(a.data.date)
+);
+---
+
+<Layout title="Backstage">
+  <!-- Header -->
+  <section class="border-b border-line bg-elevated px-6 py-16 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <h1 class="font-body text-4xl font-normal uppercase tracking-[0.12em] text-gold sm:text-5xl">
+        Backstage
+      </h1>
+      <p class="mt-4 font-body text-lg text-warm-grey">
+        Reportasjer og historier fra bandet
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts grid -->
+  <section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    {
+      posts.length > 0 ? (
+        <div class="grid gap-8 sm:grid-cols-2">
+          {posts.map((post) => (
+            <BackstageCard
+              title={post.data.title}
+              excerpt={post.data.excerpt}
+              image={post.data.image}
+              date={post.data.date}
+              href={`/backstage/${post.id}/`}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-sm border border-line bg-elevated p-8 text-center">
+          <p class="font-body text-warm-grey">Ingen reportasjer ennå.</p>
+        </div>
+      )
+    }
+  </section>
+</Layout>

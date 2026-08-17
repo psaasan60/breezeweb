@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BackstagePost from '../../components/BackstagePost.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('backstage');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <BackstagePost
+    title={post.data.title}
+    image={post.data.image}
+    date={post.data.date}
+  >
+    <Content />
+  </BackstagePost>
+
+  <!-- Tilbakelenke -->
+  <div class="mx-auto max-w-3xl px-6 py-12 border-t border-line">
+    <a
+      href="/backstage/"
+      class="inline-flex items-center gap-2 font-body text-sm font-bold uppercase tracking-wide text-gold transition-colors hover:text-gold-soft"
+    >
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Tilbake til Backstage
+    </a>
+  </div>
+</Layout>
