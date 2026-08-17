@@ -1,8 +1,9 @@
 ---
-title: Første bloggpost fra bandet
-excerpt: En kort introduksjon til Backstage-bloggen og hva som blir delt her.
-image: /images/band/band-photo.jpg
-date: "2026-08-17"
+date: 2026-08-17
+title: Dette skl bli vår Blogg!
+excerpt: Her ønsker vi å gi små reportasjer om hva som foregår i bandet, både på
+  øvelser og konserter.
+image: /images/uploads/img_8349.jpeg
 ---
 
 Dette er vår nye Backstage-blogg! Her skal vi dele historier, reportasjer og bilder fra livet rundt bandet.
