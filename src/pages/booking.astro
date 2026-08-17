@@ -20,6 +20,37 @@ const memberCount = band?.data.members?.length ?? 0;
 			A tribute to J.J. Cale and The Tulsa sound
 		</p>
 
+		<div class="mt-10 rounded-sm border border-line bg-elevated p-8 text-center">
+			<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold">Ta kontakt</h2>
+			<div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+				{entry.data.email && (
+					<a
+						href={`mailto:${entry.data.email}`}
+						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
+					>
+						<Icon name="mail" class="h-5 w-5" />
+						{entry.data.email}
+					</a>
+				)}
+				{entry.data.phone && (
+					<a
+						href={`tel:${entry.data.phone.replace(/\s/g, '')}`}
+						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
+					>
+						<Icon name="phone" class="h-5 w-5" />
+						{entry.data.phone}
+					</a>
+				)}
+			</div>
+			<p class="mt-6 font-body text-xs uppercase tracking-wide text-warm-grey">
+				<a href="/presse/" class="hover:text-gold">Pressebilder</a>
+				<span class="mx-2">·</span>
+				<a href="/konserter/" class="hover:text-gold">Konsertkalender</a>
+				<span class="mx-2">·</span>
+				<a href="/demoer/" class="hover:text-gold">Hør oss spille</a>
+			</p>
+		</div>
+
 		{entry.data.image && <FramedImage src={entry.data.image} alt="The Breeze" class="mt-10" />}
 
 		<div class="mt-10 space-y-4 font-body leading-relaxed text-warm-grey [&_p]:leading-relaxed">
@@ -57,36 +88,5 @@ const memberCount = band?.data.members?.length ?? 0;
 				</div>
 			)
 		}
-
-		<div class="mt-12 rounded-sm border border-line bg-elevated p-8 text-center">
-			<h2 class="font-body text-2xl font-normal uppercase tracking-[0.12em] text-gold">Ta kontakt</h2>
-			<div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-				{entry.data.email && (
-					<a
-						href={`mailto:${entry.data.email}`}
-						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
-					>
-						<Icon name="mail" class="h-5 w-5" />
-						{entry.data.email}
-					</a>
-				)}
-				{entry.data.phone && (
-					<a
-						href={`tel:${entry.data.phone.replace(/\s/g, '')}`}
-						class="flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 font-body text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft sm:w-auto"
-					>
-						<Icon name="phone" class="h-5 w-5" />
-						{entry.data.phone}
-					</a>
-				)}
-			</div>
-			<p class="mt-6 font-body text-xs uppercase tracking-wide text-warm-grey">
-				<a href="/presse/" class="hover:text-gold">Pressebilder</a>
-				<span class="mx-2">·</span>
-				<a href="/konserter/" class="hover:text-gold">Konsertkalender</a>
-				<span class="mx-2">·</span>
-				<a href="/demoer/" class="hover:text-gold">Hør oss spille</a>
-			</p>
-		</div>
 	</article>
 </Layout>
