@@ -97,3 +97,20 @@ collections:
             name: "images"
             widget: "list"
             field: { label: "Bilde", name: "image", widget: "image" }
+
+  - name: "backstage"
+    label: "Backstage"
+    label_singular: "Reportasje"
+    folder: "src/content/backstage"
+    create: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Kort sammendrag (vises som teaser)", name: "excerpt", widget: "text" }
+      - { label: "Hovedbilde", name: "image", widget: "image", hint: "Anbefalt størrelse: 1200x600px eller større" }
+      - { label: "Innhold", name: "body", widget: "markdown", hint: "Hovedteksten på reportasjen" }
