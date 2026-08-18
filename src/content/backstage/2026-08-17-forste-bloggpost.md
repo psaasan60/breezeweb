@@ -3,7 +3,7 @@ date: 2026-08-17
 title: Dette skal bli The Breeze Bloggen!
 excerpt: Her ønsker vi å gi små reportasjer om hva som foregår i bandet, både på
   øvelser og konserter.
-image: /images/uploads/img_8349.jpeg
+image: /images/uploads/3.jpg
 ---
 
 Dette er vår nye Backstage-blogg! Her skal vi dele historier, reportasjer og bilder fra livet rundt bandet.
