@@ -112,5 +112,5 @@ collections:
       - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
       - { label: "Tittel", name: "title", widget: "string" }
       - { label: "Kort sammendrag (vises som teaser)", name: "excerpt", widget: "text" }
-      - { label: "Hovedbilde", name: "image", widget: "image", hint: "Anbefalt størrelse: 1200x600px eller større" }
+      - { label: "Hovedbilde", name: "image", widget: "image", hint: "Bildet vises bredt (liggende format, 16:9). Bruk et liggende bilde, gjerne 1200x675px eller større – stående/kvadratiske bilder blir beskåret og kan kutte av hoder." }
       - { label: "Innhold", name: "body", widget: "markdown", hint: "Hovedteksten på reportasjen" }
