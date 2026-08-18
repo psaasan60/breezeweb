@@ -1,5 +1,5 @@
 ---
-title: The Breeze
+title: The Breeze TEST
 excerpt: JJ Cale gikk bort i 2013, men musikken hans lever i beste velgående.
   Hvorfor? Fordi den har klassisk format, og fordi den er så lett gjenkjennelig.
   Mange har nok først og fremst hørt JJ Cale gjennom Eric Claptons stemme – men
