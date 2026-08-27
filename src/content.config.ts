@@ -55,6 +55,7 @@ const backstage = defineCollection({
     title: z.string(),
     excerpt: z.string(),
     image: z.string(),
+    image2: z.string().optional(),
     date: z.union([z.string(), z.date()]).transform((d) => (d instanceof Date ? d.toISOString().slice(0, 10) : d)),
   }),
 });

@@ -2,10 +2,11 @@
 export interface Props {
   title: string;
   image: string;
+  image2?: string;
   date: string;
 }
 
-const { title, image, date } = Astro.props;
+const { title, image, image2, date } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
 const formattedDate = formatter.format(new Date(date + 'T00:00:00'));
@@ -20,16 +21,28 @@ const formattedDate = formatter.format(new Date(date + 'T00:00:00'));
     </h1>
   </div>
 
-  <!-- Hovedbilde -->
+  <!-- Bilde(r) -->
   {
     image && (
-      <div class="mb-10 overflow-hidden rounded-sm border border-line">
-        <img
-          src={image}
-          alt={title}
-          class="aspect-video w-full object-cover object-top"
-          loading="eager"
-        />
+      <div class:list={['mb-10 grid gap-3', image2 ? 'grid-cols-2' : 'grid-cols-1']}>
+        <div class="overflow-hidden rounded-sm border border-line">
+          <img
+            src={image}
+            alt={title}
+            class="aspect-video w-full object-cover object-top"
+            loading="eager"
+          />
+        </div>
+        {image2 && (
+          <div class="overflow-hidden rounded-sm border border-line">
+            <img
+              src={image2}
+              alt={title}
+              class="aspect-video w-full object-cover object-top"
+              loading="eager"
+            />
+          </div>
+        )}
       </div>
     )
   }
