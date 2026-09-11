@@ -21,7 +21,7 @@ members:
     bio:
       whoAmI: Jeg er Paul Aasan. Bor midt i Oslo sentrum. Jobber stort sett bare med
         The Breeze og musikken Har også en tjeneste som jeg kaller Leder Prat
-        hvor jeg hjelper Ledere i SMB bedrifter med daglige beslutninger.
+        hvor jeg hjelper ledere i SMB bedrifter med daglige beslutninger.
       from: Født i Drammen i 1960, oppvåkst på Bøler og Haugerud
       instruments: "Trommer, Gitar, Bass,  "
       bands: "Shame - Radar - FettNok - Saturn - The Breeze "
