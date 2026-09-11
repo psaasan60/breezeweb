@@ -213,6 +213,7 @@ const backstagePosts = (await getCollection('backstage'))
 									)}
 									<p class="mt-3 text-center font-body text-sm font-bold uppercase tracking-wide text-ivory">{m.name}</p>
 									<p class="text-center font-body text-xs uppercase tracking-wide text-warm-grey">{m.role}</p>
+									{hasBio && <p class="mt-1 text-center font-body text-[0.65rem] uppercase tracking-wide text-gold-soft">Klikk for bio</p>}
 								</div>
 							);
 						})}
