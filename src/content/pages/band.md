@@ -19,11 +19,12 @@ members:
     role: trommer, vokal
     image: /images/band/paul-aasan.jpg
     bio:
-      whoAmI: Jeg er Paul Aasan. Bor midt i Oslo sentrum. Jobber sthort sett bare med
-        musikken, samt at jeg hjelper Ledere i SMB bedrifter.
-      from: Født i Drammen i 1960
+      whoAmI: Jeg er Paul Aasan. Bor midt i Oslo sentrum. Jobber stort sett bare med
+        bande og musikken Har også en tjeneste som jeg kaller Leder Prat hvor
+        jeg hjelper Ledere i SMB bedrifter med daglige beslutninger.
+      from: Født i Drammen i 1960, oppvåkst på Bøler og Haugerud
       instruments: "Trommer, Gitar, Bass,  "
-      bands: "Shame 1972 - Radar 1976 - FettNok 1990 - Saturn - The Breeze "
+      bands: "Shame - Radar - FettNok - Saturn - The Breeze "
       interests: "Musikk - Data - Teknologi  "
   - name: Ronny Samuelsson
     role: gitar, munnspill, vokal
