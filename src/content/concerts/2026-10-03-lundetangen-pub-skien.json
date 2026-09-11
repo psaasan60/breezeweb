@@ -1,5 +1,7 @@
 {
   "date": "2026-10-03",
   "venue": "Lundetangen Pub Skien",
-  "image": "/images/uploads/lundetangen.webp"
+  "image": "/images/uploads/lundetangen.webp",
+  "url": "https://www.lundetangenpub.no/",
+  "time": "15:00"
 }
