@@ -18,6 +18,7 @@ const band = await getEntry('pages', 'band');
 const testimonials = band?.data.testimonials ?? [];
 const members = band?.data.members ?? [];
 const jjCale = await getEntry('pages', 'jj-cale');
+const home = await getEntry('pages', 'home');
 
 const backstagePosts = (await getCollection('backstage'))
 	.sort((a, b) => b.data.date.localeCompare(a.data.date))
@@ -70,6 +71,40 @@ const backstagePosts = (await getCollection('backstage'))
 			</a>
 		</p>
 	</div>
+
+	{
+		home?.data.video && (
+			<div class="border-b border-line bg-elevated px-6 py-10 text-center">
+				<p class="font-body text-xs font-bold uppercase tracking-[0.16em] text-warm-grey-dim">Se oss spille</p>
+				<button
+					id="watch-video-button"
+					type="button"
+					class="mt-4 inline-flex items-center gap-3 rounded-sm border-2 border-gold px-8 py-4 font-body text-base font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold-soft hover:text-gold-soft"
+				>
+					<Icon name="play" class="h-6 w-6" />
+					Se video
+				</button>
+
+				<dialog id="video-dialog" class="w-full max-w-4xl border border-line bg-base p-0 backdrop:bg-base/90">
+					<div class="relative">
+						<button
+							id="video-dialog-close"
+							type="button"
+							aria-label="Lukk video"
+							class="absolute -top-10 right-0 text-ivory transition-colors hover:text-gold"
+						>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-7 w-7">
+								<path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+							</svg>
+						</button>
+						<video id="dialog-video" src={home.data.video} controls class="block max-h-[80vh] w-full">
+							<track kind="captions" />
+						</video>
+					</div>
+				</dialog>
+			</div>
+		)
+	}
 
 	{
 		band?.data.excerpt && (
@@ -330,6 +365,26 @@ const backstagePosts = (await getCollection('backstage'))
 		audio.addEventListener('play', () => setPlaying(true));
 		audio.addEventListener('pause', () => setPlaying(false));
 		audio.addEventListener('ended', () => setPlaying(false));
+	}
+
+	const videoDialog = document.getElementById('video-dialog') as HTMLDialogElement | null;
+	const watchButton = document.getElementById('watch-video-button') as HTMLButtonElement | null;
+	const dialogVideo = document.getElementById('dialog-video') as HTMLVideoElement | null;
+	const videoCloseButton = document.getElementById('video-dialog-close') as HTMLButtonElement | null;
+	if (videoDialog && watchButton && dialogVideo) {
+		function closeVideoDialog() {
+			dialogVideo?.pause();
+			videoDialog?.close();
+		}
+		watchButton.addEventListener('click', () => {
+			videoDialog.showModal();
+			dialogVideo.play();
+		});
+		videoCloseButton?.addEventListener('click', closeVideoDialog);
+		videoDialog.addEventListener('click', (event) => {
+			if (event.target === videoDialog) closeVideoDialog();
+		});
+		videoDialog.addEventListener('close', () => dialogVideo.pause());
 	}
 
 	const root = document.getElementById('testimonial-rotator');

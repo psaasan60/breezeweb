@@ -10,6 +10,7 @@ const pages = defineCollection({
     images: z.array(z.string()).optional(),
     email: z.string().optional(),
     phone: z.string().optional(),
+    video: z.string().optional(),
     members: z
       .array(
         z.object({

@@ -80,6 +80,19 @@ collections:
               - { label: "Forfatter", name: "author", widget: "string" }
           - { label: "Tekst om bandet", name: "body", widget: "markdown" }
 
+      - name: "home"
+        label: "Forside – video"
+        file: "src/content/pages/home.md"
+        fields:
+          - { label: "Tittel (brukes ikke, kun teknisk felt)", name: "title", widget: "string" }
+          - label: "Video"
+            name: "video"
+            widget: "file"
+            media_folder: "public/video"
+            public_folder: "/video"
+            required: false
+            hint: "Last opp en mp4-fil. Komprimer videoen først – bør helst være under 50–80 MB for rask lasting."
+
       - name: "jj-cale"
         label: "JJ Cale-siden"
         file: "src/content/pages/jj-cale.md"
