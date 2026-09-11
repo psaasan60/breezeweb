@@ -60,6 +60,17 @@ collections:
               - { label: "Navn", name: "name", widget: "string" }
               - { label: "Rolle", name: "role", widget: "string" }
               - { label: "Bilde", name: "image", widget: "image", required: false }
+              - label: "Bio"
+                name: "bio"
+                widget: "object"
+                required: false
+                collapsed: true
+                fields:
+                  - { label: "Hvem er jeg?", name: "whoAmI", widget: "text", required: false }
+                  - { label: "Hvor kommer jeg fra?", name: "from", widget: "string", required: false }
+                  - { label: "Hvilke instrumenter spiller jeg?", name: "instruments", widget: "string", required: false }
+                  - { label: "Hvilke band har jeg spilt med?", name: "bands", widget: "string", required: false }
+                  - { label: "Interesser", name: "interests", widget: "string", required: false }
           - label: "Tilbakemeldinger fra arrangører"
             name: "testimonials"
             widget: "list"

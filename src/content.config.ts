@@ -16,6 +16,15 @@ const pages = defineCollection({
           name: z.string(),
           role: z.string(),
           image: z.string().optional(),
+          bio: z
+            .object({
+              whoAmI: z.string().optional(),
+              from: z.string().optional(),
+              instruments: z.string().optional(),
+              bands: z.string().optional(),
+              interests: z.string().optional(),
+            })
+            .optional(),
         }),
       )
       .optional(),

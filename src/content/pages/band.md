@@ -9,18 +9,48 @@ members:
   - name: Lasse Ekstrøm
     role: bass, vokal
     image: /images/band/lasse-ekstrom.jpg
+    bio:
+      whoAmI: ""
+      from: ""
+      instruments: ""
+      bands: ""
+      interests: ""
   - name: Paul Aasan
     role: trommer, vokal
     image: /images/band/paul-aasan.jpg
+    bio:
+      whoAmI: ""
+      from: ""
+      instruments: ""
+      bands: ""
+      interests: ""
   - name: Ronny Samuelsson
     role: gitar, munnspill, vokal
     image: /images/band/ronny-samuelsson.jpg
+    bio:
+      whoAmI: ""
+      from: ""
+      instruments: ""
+      bands: ""
+      interests: ""
   - name: Ferdinand Berentzen
     role: gitar, vokal
     image: /images/band/ferdinand-berentzen.jpg
+    bio:
+      whoAmI: ""
+      from: ""
+      instruments: ""
+      bands: ""
+      interests: ""
   - name: Øyvind Rusten
     role: keyboard, vokal
     image: /images/band/oyvind-rusten.jpg
+    bio:
+      whoAmI: ""
+      from: ""
+      instruments: ""
+      bands: ""
+      interests: ""
 testimonials:
   - quote: The Breeze har gjestet vår scene en rekke ganger til stor glede for
       publikum. Bandet er et meget tight og godt band som er svært «tro» mot JJ
