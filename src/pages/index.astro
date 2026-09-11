@@ -142,24 +142,80 @@ const backstagePosts = (await getCollection('backstage'))
 				<div class="rounded-sm border border-line bg-elevated p-8 sm:p-14">
 					<h2 class="text-center font-body text-3xl font-normal uppercase tracking-[0.12em] text-gold sm:text-4xl">Møt bandet</h2>
 					<div class="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-5">
-						{members.map((m) => (
-							<div>
-								<FramedImage
-									src={m.image}
-									alt={m.name}
-									size="sm"
-									class="aspect-3/4"
-									imgClass="h-full w-full object-cover"
-								>
-									<div class="flex aspect-3/4 w-full flex-col items-center justify-center gap-2 text-warm-grey-dim">
-										<Icon name="photo" class="h-6 w-6" />
-										<span class="font-body text-[0.6rem] uppercase tracking-wide">Bilde kommer</span>
-									</div>
-								</FramedImage>
-								<p class="mt-3 text-center font-body text-sm font-bold uppercase tracking-wide text-ivory">{m.name}</p>
-								<p class="text-center font-body text-xs uppercase tracking-wide text-warm-grey">{m.role}</p>
-							</div>
-						))}
+						{members.map((m) => {
+							const bio = m.bio ?? {};
+							const hasBio = Boolean(bio.whoAmI || bio.from || bio.instruments || bio.bands || bio.interests);
+							return (
+								<div>
+									{hasBio ? (
+										<div class="perspective-distant">
+											<div
+												class="member-flip relative aspect-3/4 w-full cursor-pointer transform-3d transition-transform duration-700 ease-out"
+												role="button"
+												tabindex="0"
+												aria-pressed="false"
+												aria-label={`Vis bio for ${m.name}`}
+											>
+												<div class="absolute inset-0 backface-hidden">
+													<FramedImage src={m.image} alt={m.name} size="sm" class="aspect-3/4" imgClass="h-full w-full object-cover">
+														<div class="flex aspect-3/4 w-full flex-col items-center justify-center gap-2 text-warm-grey-dim">
+															<Icon name="photo" class="h-6 w-6" />
+															<span class="font-body text-[0.6rem] uppercase tracking-wide">Bilde kommer</span>
+														</div>
+													</FramedImage>
+													<span class="absolute right-2 bottom-2 flex h-6 w-6 items-center justify-center rounded-full border border-gold bg-base/80 text-gold">
+														<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-3.5 w-3.5">
+															<path d="M12 4.5v15M4.5 12h15" stroke-linecap="round" />
+														</svg>
+													</span>
+												</div>
+												<div class="absolute inset-0 flex flex-col overflow-y-auto border border-line bg-base p-3 text-left backface-hidden transform-[rotateY(180deg)]">
+													<p class="font-body text-xs font-bold uppercase tracking-wide text-gold">{m.name}</p>
+													<div class="mt-2 space-y-1.5 font-body text-[0.68rem] leading-snug text-warm-grey">
+														{bio.whoAmI && <p>{bio.whoAmI}</p>}
+														{bio.from && (
+															<p>
+																<b class="text-gold-soft">Fra:</b> {bio.from}
+															</p>
+														)}
+														{bio.instruments && (
+															<p>
+																<b class="text-gold-soft">Spiller:</b> {bio.instruments}
+															</p>
+														)}
+														{bio.bands && (
+															<p>
+																<b class="text-gold-soft">Tidligere band:</b> {bio.bands}
+															</p>
+														)}
+														{bio.interests && (
+															<p>
+																<b class="text-gold-soft">Interesser:</b> {bio.interests}
+															</p>
+														)}
+													</div>
+												</div>
+											</div>
+										</div>
+									) : (
+										<FramedImage
+											src={m.image}
+											alt={m.name}
+											size="sm"
+											class="aspect-3/4"
+											imgClass="h-full w-full object-cover"
+										>
+											<div class="flex aspect-3/4 w-full flex-col items-center justify-center gap-2 text-warm-grey-dim">
+												<Icon name="photo" class="h-6 w-6" />
+												<span class="font-body text-[0.6rem] uppercase tracking-wide">Bilde kommer</span>
+											</div>
+										</FramedImage>
+									)}
+									<p class="mt-3 text-center font-body text-sm font-bold uppercase tracking-wide text-ivory">{m.name}</p>
+									<p class="text-center font-body text-xs uppercase tracking-wide text-warm-grey">{m.role}</p>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</section>
@@ -315,4 +371,24 @@ const backstagePosts = (await getCollection('backstage'))
 
 		scheduleNext();
 	}
+
+	document.querySelectorAll<HTMLElement>('.member-flip').forEach((card) => {
+		function toggle() {
+			const flipped = card.classList.toggle('is-flipped');
+			card.setAttribute('aria-pressed', String(flipped));
+		}
+		card.addEventListener('click', toggle);
+		card.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				toggle();
+			}
+		});
+	});
 </script>
+
+<style>
+	.member-flip.is-flipped {
+		transform: rotateY(180deg);
+	}
+</style>
