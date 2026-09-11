@@ -1,4 +1,4 @@
 ---
 title: Forside
-video: ""
+video: /video/Moss-BK-1.mp4
 ---
