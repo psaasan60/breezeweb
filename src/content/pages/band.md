@@ -44,7 +44,13 @@ members:
     role: gitar, vokal
     image: /images/band/ferdinand-berentzen.jpg
     bio:
-      whoAmI: ""
+      whoAmI: >
+        Ferdinand Berentzen er navnet, og jeg har min base på Sørumsand på
+        Romerike. Med forkjærlighet for amerikansk musikk som Roots, Americana
+        og Southern Rock var det lett å si ja da Ronny spurte om jeg ville bli
+        med i The Breeze. Jeg har spilt et eller annet instrument siden jeg var
+        liten, og min musikalske fortid inkluderer diverse band, blant annet
+        Divin´ Ducks i perioden 1989 - 1993 og 2002 til 2019. 
       from: ""
       instruments: ""
       bands: ""
