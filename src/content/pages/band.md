@@ -30,10 +30,15 @@ members:
     role: gitar, munnspill, vokal
     image: /images/band/ronny-samuelsson.jpg
     bio:
-      whoAmI: ""
-      from: ""
-      instruments: ""
-      bands: ""
+      whoAmI: >-
+        Mitt navn er Ronny Samuelsson, og jeg bor i Oslo.
+
+        Etter mange tiår med spilling i diverse cover- og eventband, bestemte jeg meg i 2017 at det nå var på tide å "go back to my roots"
+
+        Da startet jeg opp The Breeze for å få spille den musikken mitt hjerte brenner for. Dette har så langt vært en utrolig reise som har tatt oss rundt i både inn- og utland.
+      from: Sverige
+      instruments: "Gitar, Bass "
+      bands: Saturn - The Breeze
       interests: ""
   - name: Ferdinand Berentzen
     role: gitar, vokal
