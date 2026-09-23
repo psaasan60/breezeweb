@@ -102,6 +102,13 @@ testimonials:
       gitarspill og bandets sterke formidling av den karakteristiske «Tulsa
       Sound».
     author: Musikfans.dk, Danmark
+  - author: Frank & Eva Mikrobryggeriet Lillehammer
+    quote: >-
+      For en eftasblues i Mikrobryggeriet!
+
+      Det ble en innholdsrik og særdeles trivelig ettermiddag da The Breeze hyllet J.J. Cale og The Tulsa Sound på Mikrobryggeriet.
+
+      Gjennom tre sett fikk publikum høre klassikere som «After Midnight», «Cocaine», «Crazy Mama», «Don’t Cry Sister» og selvfølgelig «Call Me the Breeze» – fremført med spilleglede, respekt og stor musikalitet.
 ---
 
 JJ Cale gikk bort i 2013, men musikken hans lever i beste velgående. Hvorfor? Fordi den har klassisk format, og fordi den er så lett gjenkjennelig. Mange har nok først og fremst hørt JJ Cale gjennom Eric Claptons stemme – men det er altså JJ Cale som komponerte både «After Midnight» og «Cocaine».
