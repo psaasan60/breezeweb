@@ -10,7 +10,15 @@ members:
     role: bass, vokal
     image: /images/band/lasse-ekstrom.jpg
     bio:
-      whoAmI: ""
+      whoAmI: >-
+        Jeg heter Lasse Ekstrøm og bor i Vinterbro. Musikken har vært en viktig
+        del av livet mitt i mange år.
+
+        På 80-tallet spilte jeg i forskjellige coverband, og den siste jeg spilte sammen med den gangen var Ronny Samuelsson.
+
+        Så gikk det faktisk rundt 40 år før musikken skulle føre oss sammen igjen.
+
+        Det var Ronny som tok kontakt, og plutselig var vi tilbake i musikken sammen. Det ble starten på en helt ny opplevelse – denne gangen med musikken til JJ Cale.
       from: ""
       instruments: ""
       bands: ""
