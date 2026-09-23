@@ -59,7 +59,12 @@ members:
     role: keyboard, vokal
     image: /images/band/oyvind-rusten.jpg
     bio:
-      whoAmI: ""
+      whoAmI: Fornavnet mitt er Øyvind, men jeg kalles for det meste bare for
+        «Rusten». Jeg bor i Oslo og hvis jeg spiller for meg selv, er det for
+        det meste taffelmusikk på Chicago-orgel eller Berlin-klaver. Men å være
+        en del av gutta i The Breeze gjør meg stolt.  Det var nettopp
+        Cale-låtene som sitter best i hukommelsen, med minner fra en god
+        ungdomstid på 70-tallets Romerike.
       from: ""
       instruments: ""
       bands: ""
