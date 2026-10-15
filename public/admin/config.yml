@@ -38,7 +38,7 @@ collections:
       - label: "Lydfil (mp3)"
         name: "src"
         widget: "file"
-        media_folder: "public/audio"
+        media_folder: "/public/audio"
         public_folder: "/audio"
         hint: "Last opp en mp3-fil"
 
@@ -88,7 +88,7 @@ collections:
           - label: "Video"
             name: "video"
             widget: "file"
-            media_folder: "public/video"
+            media_folder: "/public/video"
             public_folder: "/video"
             required: false
             hint: "Last opp en mp4-fil. Komprimer videoen først – bør helst være under 50–80 MB for rask lasting."
