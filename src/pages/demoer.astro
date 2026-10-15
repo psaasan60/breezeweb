@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
 
-const tracks = await getCollection('tracks');
+// Nyeste først; spor uten dato havner nederst
+const tracks = (await getCollection('tracks')).sort((a, b) =>
+	(b.data.date ?? '').localeCompare(a.data.date ?? ''),
+);
 ---
 
 <Layout title="Demoer">

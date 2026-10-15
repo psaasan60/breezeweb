@@ -56,6 +56,7 @@ const tracks = defineCollection({
   schema: z.object({
     title: z.string(),
     src: z.string(),
+    date: z.string().optional(),
   }),
 });
 

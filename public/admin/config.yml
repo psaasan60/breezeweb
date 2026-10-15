@@ -41,6 +41,7 @@ collections:
         media_folder: "/public/audio"
         public_folder: "/audio"
         hint: "Last opp en mp3-fil"
+      - { label: "Lagt til", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm", date_format: "YYYY-MM-DD", time_format: "HH:mm", required: false, hint: "Bestemmer rekkefølgen på demosiden – nyeste vises øverst. Fylles ut automatisk for nye låter." }
 
   - name: "pages"
     label: "Sider"
