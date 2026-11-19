@@ -1,8 +1,9 @@
 ---
 date: 2026-11-06
 title: På Arendal tur
-excerpt: Dette er en test
+excerpt: Helgens tur til Arendal Blues klubb
 image: /images/uploads/img_3131.jpeg
+image2: /images/uploads/img_3129.jpeg
 ---
 ## The Breeze på tur – blues, burger og god stemning i Arendal! 🎶
 
