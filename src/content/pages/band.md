@@ -126,6 +126,18 @@ testimonials:
       
       The Breeze utmerker seg med sine vel innøvde kor, noe som skiller bandet fra de fleste andre i samme genre. Spennende band, flinke musikere og fint repertoar. Håper vi får jobbe sammen ved flere anledninger.
     author: Harald Norvik
+  - quote: >
+      Takk for en herlig konsertkveld på Kaffka! 🎶
+
+
+      Hunndalen Bluesklubb takker The Breeze for konserten i går kveld! Vi fikk en flott kveld med JJ Cales musikk, krydret med innslag av Santana, Lynyrd Skynyrd og Mikael Rickfors’ tolkninger.
+
+
+      Publikum ville ha mer, og bandet svarte med flere ekstranumre. Til slutt rundet The Breeze av med Status Quos «Rockin’ All Over the World» til stor jubel fra de fremmøtte!
+
+
+      Tusen takk til bandet, alle som tok turen, og Kaffka for en kveld fylt med musikk og god stemning!
+    author: Hilsen Hunndalen Bluesklubb
 ---
 
 JJ Cale gikk bort i 2013, men musikken hans lever i beste velgående. Hvorfor? Fordi den har klassisk format, og fordi den er så lett gjenkjennelig. Mange har nok først og fremst hørt JJ Cale gjennom Eric Claptons stemme – men det er altså JJ Cale som komponerte både «After Midnight» og «Cocaine».
